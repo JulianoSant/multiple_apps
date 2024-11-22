@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:calculadora/calculadora.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,8 +16,10 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
+        primaryColor: const Color(0xFF6200EE),
       ),
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
@@ -30,13 +33,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -45,25 +41,46 @@ class _MyHomePageState extends State<MyHomePage> {
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text(widget.title),
       ),
-      body: Center(
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: GridView(
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+        children: const [
+          // sub app calculadora
+          AppTile(title: "App 1", icon: Icons.app_blocking, navigateTo: Calculadora()),
+          // AppTile(title: "App 2", icon: Icons.app_registration, navigateTo: App2Home()),
+          // AppTile(title: "App 3", icon: Icons.app_shortcut, navigateTo: App3Home()),
+        ],
+      ),
+      ), 
+    );
+  }
+}
+
+class AppTile extends StatelessWidget {
+  final String title;
+  final IconData icon;
+  final Widget navigateTo;
+
+  const AppTile({super.key, required this.title, required this.icon, required this.navigateTo});
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () => Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => navigateTo),
+      ),
+      child: Card(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
+          children: [
+            Icon(icon, size: 50),
+            const SizedBox(height: 10),
+            Text(title),
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), 
     );
   }
 }
