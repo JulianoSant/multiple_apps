@@ -4,6 +4,10 @@ A new Flutter project.
 
 -versao do flutter: 3.24.3
 
+para criar um novo app, devera ser criado como um package.
+    - flutter create --template=package <nome_do_sub_app>
+
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.
