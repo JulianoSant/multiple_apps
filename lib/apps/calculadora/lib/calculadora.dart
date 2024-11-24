@@ -1,4 +1,7 @@
 library Calculadora;
+
+import 'package:calculadora/utils/button.dart';
+import 'package:calculadora/utils/constantes.dart';
 import 'package:flutter/material.dart';
 
 class Calculadora extends StatelessWidget {
@@ -8,10 +11,36 @@ class Calculadora extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text("App 1")),
-      body: const Center(
-        child: Text("Bem-vindo ao App 1"),
+      body: Column(
+        children: [
+          const Expanded(
+            flex: 1,
+            child: Align(
+              alignment: Alignment.bottomRight,
+              child: Padding(
+                padding: EdgeInsets.all(16.0),
+                child: Text(
+                  "0",
+                  style: TextStyle(
+                    fontSize: 48,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            ),
+          ),
+          Expanded(
+            flex: 3,
+            child: GridView.builder(
+              itemCount: Constantes.CALCULATOR_BUTTONS.length,
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 4),
+              itemBuilder: (context, index) => Button(
+                label: Constantes.CALCULATOR_BUTTONS[index],
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
 }
-

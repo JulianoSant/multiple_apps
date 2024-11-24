@@ -12,7 +12,7 @@ dependencies:
     sdk: flutter
   
   # Sub apps
-  Calculadora:
+  calculadora:
     path: lib/apps/calculadora
   # app2:
   #   path: apps/app2

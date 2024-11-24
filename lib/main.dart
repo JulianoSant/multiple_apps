@@ -8,7 +8,6 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -33,7 +32,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,15 +42,15 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: GridView(
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
-        children: const [
-          // sub app calculadora
-          AppTile(title: "App 1", icon: Icons.app_blocking, navigateTo: Calculadora()),
-          // AppTile(title: "App 2", icon: Icons.app_registration, navigateTo: App2Home()),
-          // AppTile(title: "App 3", icon: Icons.app_shortcut, navigateTo: App3Home()),
-        ],
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+          children: const [
+            // sub app calculadora
+            AppTile(title: "App 1", icon: Icons.app_blocking, navigateTo: Calculadora()),
+            // AppTile(title: "App 2", icon: Icons.app_registration, navigateTo: App2Home()),
+            // AppTile(title: "App 3", icon: Icons.app_shortcut, navigateTo: App3Home()),
+          ],
+        ),
       ),
-      ), 
     );
   }
 }
