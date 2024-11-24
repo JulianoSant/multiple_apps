@@ -43,6 +43,7 @@ class CalculadoraPage extends StatelessWidget {
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 4),
               itemBuilder: (context, index) => Button(
                 label: Constantes.CALCULATOR_BUTTONS[index],
+                onPressed: () => controller.input(Constantes.CALCULATOR_BUTTONS[index]),
               ),
             ),
           ),
