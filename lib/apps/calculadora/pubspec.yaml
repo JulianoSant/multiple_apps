@@ -11,7 +11,16 @@ dependencies:
   flutter:
     sdk: flutter
 
+  # Gerenciador de estado - MOBX
+  mobx: ^2.4.0
+  flutter_mobx: ^2.2.1+1
+
 dev_dependencies:
+
+  # Gerador de código mobx
+  mobx_codegen: ^2.6.2
+  build_runner: ^2.4.13
+
   flutter_test:
     sdk: flutter
   flutter_lints: ^4.0.0

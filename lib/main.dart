@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:calculadora/calculadora.dart';
+import 'package:calculadora/calculadora_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -43,9 +43,9 @@ class _MyHomePageState extends State<MyHomePage> {
         padding: const EdgeInsets.all(16.0),
         child: GridView(
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
-          children: const [
+          children: [
             // sub app calculadora
-            AppTile(title: "App 1", icon: Icons.app_blocking, navigateTo: Calculadora()),
+            AppTile(title: "App 1", icon: Icons.app_blocking, navigateTo: CalculadoraPage()),
             // AppTile(title: "App 2", icon: Icons.app_registration, navigateTo: App2Home()),
             // AppTile(title: "App 3", icon: Icons.app_shortcut, navigateTo: App3Home()),
           ],

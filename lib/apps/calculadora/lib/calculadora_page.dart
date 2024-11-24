@@ -1,11 +1,16 @@
 library Calculadora;
 
+import 'package:calculadora/calculadora_controller.dart';
 import 'package:calculadora/utils/button.dart';
 import 'package:calculadora/utils/constantes.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 
-class Calculadora extends StatelessWidget {
-  const Calculadora({super.key});
+class CalculadoraPage extends StatelessWidget {
+  CalculadoraPage({super.key});
+
+  // aq está a instancia do controller onde foi criado o display e os metodos de ação com o mobx
+  final CalculadoraController controller = CalculadoraController();
 
   @override
   Widget build(BuildContext context) {
@@ -13,19 +18,21 @@ class Calculadora extends StatelessWidget {
       appBar: AppBar(title: const Text("App 1")),
       body: Column(
         children: [
-          const Expanded(
+          Expanded(
             flex: 1,
             child: Align(
               alignment: Alignment.bottomRight,
               child: Padding(
-                padding: EdgeInsets.all(16.0),
-                child: Text(
-                  "0",
-                  style: TextStyle(
-                    fontSize: 48,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
+                padding: const EdgeInsets.all(16.0),
+                child: Observer(builder: (_) {
+                  return Text(
+                    controller.display,
+                    style: const TextStyle(
+                      fontSize: 48,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  );
+                }),
               ),
             ),
           ),
